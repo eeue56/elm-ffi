@@ -1,7 +1,7 @@
 # elm-ffi
 An FFI interface for Elm
 
-:danger: This library is intended for _experienced_ Elm developers only! If you haven't written a lot of Elm and end up here, try asking about your problem on Slack instead! :danger:
+:bangbang: This library is intended for _experienced_ Elm developers only! If you haven't written a lot of Elm and end up here, try asking about your problem on Slack instead! :bangbang:
 
 
 This inferface currently only supports sync functions.
