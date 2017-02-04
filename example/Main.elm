@@ -1,7 +1,9 @@
 module Main exposing (..)
 
 import Html
-import Json.Encode
+import Html.Events
+import Json.Encode exposing (Value)
+import Task exposing (Task)
 import FFI
 
 
@@ -17,7 +19,43 @@ logWithMessage message thing =
         |> (\_ -> ())
 
 
-main =
+returnAfter1000 : Value -> Task String Value
+returnAfter1000 value =
+    FFI.async """
+setTimeout(function(){
+    callback( _succeed(_0) );
+}, 1000);
+"""
+        [ value ]
+
+
+type Msg
+    = Thing (Result String Value)
+    | Trigger
+
+
+update : Msg -> () -> ( (), Cmd Msg )
+update msg _ =
+    let
+        _ =
+            log msg
+    in
+        case msg of
+            Trigger ->
+                ( ()
+                , Task.attempt Thing
+                    (returnAfter1000 <| Json.Encode.int 50)
+                )
+
+            Thing thing ->
+                let
+                    _ =
+                        log ("We got " ++ toString thing)
+                in
+                    ( (), Cmd.none )
+
+
+logExample =
     let
         _ =
             logWithMessage "An example of saying hello:" "hello"
@@ -26,3 +64,12 @@ main =
             log { something = 1, elseHere = 2 }
     in
         Html.text ""
+
+
+main =
+    Html.program
+        { init = ( (), Cmd.none )
+        , view = (\_ -> Html.div [ Html.Events.onClick Trigger ] [ Html.text "Click to see 50" ])
+        , update = update
+        , subscriptions = (\_ -> Sub.none)
+        }
