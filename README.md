@@ -48,7 +48,7 @@ returnAfterX : Int -> Value -> Task String Value
 returnAfterX time value =
     FFI.async """
 setTimeout(function(){
-    _succeed(_1)
+    callback(_succeed(_1))
 }, _0)
 """
     [ Json.Encode.int time, value ]
