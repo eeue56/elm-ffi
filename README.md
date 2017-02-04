@@ -29,3 +29,7 @@ someFunction =
         5
 
 ```
+
+Each argument is applied in order of the list of arguments given - so `_0` is the first argument, then `_1` is the second and so on. 
+
+In order to ensure that the code works okay, ensure that any function you make takes _each argument seperately_. Otherwise, the functions are no longer pure.
