@@ -1,7 +1,5 @@
 var _eeue56$elm_ffi$Native_FFI = function(){
 
-
-
     // given "console.log(_0);", return "function(_0) { console.log(_0); }("hello")"
     var makeFunction = function(text, args, isAsync){
         var i = 0;
