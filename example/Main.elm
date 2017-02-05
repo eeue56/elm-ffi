@@ -19,7 +19,7 @@ logWithMessage message thing =
         |> (\_ -> ())
 
 
-returnAfter1000 : Value -> Task String Value
+returnAfter1000 : Value -> Task Value Value
 returnAfter1000 value =
     FFI.async """
 setTimeout(function(){
@@ -30,7 +30,7 @@ setTimeout(function(){
 
 
 type Msg
-    = Thing (Result String Value)
+    = Thing (Result Value Value)
     | Trigger
 
 

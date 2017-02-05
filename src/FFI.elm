@@ -2,7 +2,9 @@ module FFI exposing (..)
 
 {-|
 
-@docs asIs, async, sync
+@docs sync, safeSync
+@docs async, safeAsync
+@docs asIs
 -}
 
 import Json.Decode as Decode
