@@ -1,7 +1,14 @@
 # elm-ffi
-An FFI interface for Elm
+A FFI interface for Elm
 
 :bangbang: This library is intended for _experienced_ Elm developers only! If you haven't written a lot of Elm and end up here, try asking about your problem on Slack instead! :bangbang:
+
+Both `sync` and `async` functions can introduce runtime errors in Elm and break everything. `safeAsync` and `safeSync` can be used more safely, as they wrap each call in `try..catch` and return a result. Note, if `safeAsync`'s code fails during callback evaluation, it will not be returned as a result and will cause runtime errors.
+
+
+## Installation 
+
+As this code contains native code, I suggest using [elm-github-install](https://github.com/gdotdesign/elm-github-install) to use this package. You'll also need to add `"native-modules": true` to your `elm-package.json`.
 
 
 ## Sync
@@ -18,6 +25,7 @@ log : a -> ()
 log thing =
     FFI.sync "console.log(_0);" [ FFI.asIs thing ]
         |> (\_ -> ())
+
 ```
 
 which can then be used like this:
@@ -35,6 +43,22 @@ someFunction =
 Each argument is applied in order of the list of arguments given - so `_0` is the first argument, then `_1` is the second and so on. 
 
 In order to ensure that the code works okay, ensure that any function you make takes _each argument seperately_. Otherwise, the functions no longer work properly with partial application.
+
+
+Note that `safeSync` exists in order to allow for safer creation of runtime functions, by instead returning a `Result`. For example:
+
+```elm
+safeLog : a -> ()
+safeLog thing = 
+    case FFI.safeSync "console.log(_0);" [ FFI.asIs thing ] of 
+        Err message ->
+            let
+                _ = Debug.log "FFI log function did not work!" 
+            in 
+                ()
+        Ok v ->
+            ()
+```
 
 
 ## Async

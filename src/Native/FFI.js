@@ -54,17 +54,39 @@ var _eeue56$elm_ffi$Native_FFI = function(){
         argsCopy.push(_elm_lang$core$Native_Scheduler.fail);
 
         var result = func.apply(null, argsCopy);
-        
+
         if (typeof result === "undefined"){
             return null;
         }
         return result;
     };
 
+    var makeSafe = function(text, args, isAsync) {
+        var func = sync;
+        if (isAsync) {
+            func = async;
+        }
+
+        try {
+            var result = func(text, args);
+            return {
+                ctor: "Ok",
+                _0: result
+            };
+        } catch (e) {
+            return {
+                ctor: 'Err',
+                _0: 'Error during load: ' + e.message
+            };
+        }
+    
+    };
+
     // expose your functions here
     return {
         sync: F2(sync),
         async: F2(async),
-        asIs: function(v) { return v; }
+        asIs: function(v) { return v; },
+        makeSafe: F3(makeSafe)
     };
 }();
