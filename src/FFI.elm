@@ -4,7 +4,7 @@ module FFI exposing (..)
 
 @docs sync, safeSync
 @docs async, safeAsync
-@docs asIs
+@docs asIs, intoElm
 -}
 
 import Json.Decode as Decode
@@ -40,7 +40,7 @@ asIs thing =
 -}
 intoElm : Value -> a
 intoElm thing =
-    Native.intoElm thing
+    Native.FFI.intoElm thing
 
 
 {-| Like sync but works with async stuff. Use `callback(_succeed(value))` or `callback(_fail(value))`
