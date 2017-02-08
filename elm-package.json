@@ -1,5 +1,5 @@
 {
-    "version": "1.2.0",
+    "version": "1.2.1",
     "summary": "helpful summary of your project, less than 80 characters",
     "repository": "https://github.com/eeue56/elm-ffi.git",
     "license": "BSD3",
