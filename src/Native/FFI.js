@@ -80,11 +80,16 @@ var _eeue56$elm_ffi$Native_FFI = function(){
     
     };
 
+    var intoElm = function(a){
+        return a;
+    };
+
     // expose your functions here
     return {
         sync: F2(sync),
         async: F2(async),
         asIs: function(v) { return v; },
+        intoElm: intoElm,
         makeSafe: F3(makeSafe)
     };
 }();

@@ -36,6 +36,13 @@ asIs thing =
     Native.FFI.asIs thing
 
 
+{-| Extremely dangerous, only use for prototyping
+-}
+intoElm : Value -> a
+intoElm thing =
+    Native.intoElm thing
+
+
 {-| Like sync but works with async stuff. Use `callback(_succeed(value))` or `callback(_fail(value))`
 -}
 async : String -> List Value -> Task Value Value
