@@ -77,11 +77,14 @@ var _eeue56$elm_ffi$Native_FFI = function(){
                 _0: 'Error during load: ' + e.message
             };
         }
-    
     };
 
     var intoElm = function(a){
         return a;
+    };
+
+    var trueToString = function(a){
+        return a.toString();
     };
 
     // expose your functions here
@@ -90,6 +93,8 @@ var _eeue56$elm_ffi$Native_FFI = function(){
         async: F2(async),
         asIs: function(v) { return v; },
         intoElm: intoElm,
-        makeSafe: F3(makeSafe)
+        makeSafe: F3(makeSafe),
+        trueToString: trueToString,
+        
     };
 }();

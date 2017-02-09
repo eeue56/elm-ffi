@@ -5,6 +5,7 @@ module FFI exposing (..)
 @docs sync, safeSync
 @docs async, safeAsync
 @docs asIs, intoElm
+@docs toString
 -}
 
 import Json.Decode as Decode
@@ -55,3 +56,10 @@ async text args =
 safeAsync : String -> List Value -> Result String (Task Value Value)
 safeAsync text args =
     Native.FFI.makeSafe text (Encode.list args) True
+
+
+{-| Performs a real `toString` on the object passed in
+-}
+toString : a -> String
+toString a =
+    Native.FFI.trueToString a
