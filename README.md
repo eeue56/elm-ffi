@@ -1,9 +1,9 @@
 # elm-ffi
 A FFI interface for Elm
 
-:bangbang: This library is intended for _experienced_ Elm developers only! If you haven't written a lot of Elm and end up here, try asking about your problem on Slack instead! :bangbang:
+:fire: :bangbang: This library is intended for _experienced_ Elm developers only! If you haven't written a lot of Elm and end up here, try asking about your problem on Slack instead! :bangbang: :fire:
 
-Both `sync` and `async` functions can introduce runtime errors in Elm and break everything. `safeAsync` and `safeSync` can be used more safely, as they wrap each call in `try..catch` and return a result. Note, if `safeAsync`'s code fails during callback evaluation, it will not be returned as a result and will cause runtime errors.
+:fire: Both `sync` and `async` functions can introduce runtime errors in Elm and break everything. `safeAsync` and `safeSync` can be used more safely, as they wrap each call in `try..catch` and return a result. Note, if `safeAsync`'s code fails during callback evaluation, it will not be returned as a result and will cause runtime errors. Because of this, this library should only really be used for prototyping ideas. This is _not_ a production quality library. :fire:
 
 
 ## Installation 
