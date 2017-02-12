@@ -5,11 +5,15 @@ A FFI interface for Elm
 
 :fire: Both `sync` and `async` functions can introduce runtime errors in Elm and break everything. `safeAsync` and `safeSync` can be used more safely, as they wrap each call in `try..catch` and return a result. Note, if `safeAsync`'s code fails during callback evaluation, it will not be returned as a result and will cause runtime errors. Because of this, this library should only really be used for prototyping ideas. This is _not_ a production quality library. :fire:
 
+##  Install
 
-## Installation 
+You need [elm-proper-install](https://github.com/eeue56/elm-proper-install) to install this package
 
-As this code contains native code, I suggest using [elm-github-install](https://github.com/gdotdesign/elm-github-install) to use this package. You'll also need to add `"native-modules": true` to your `elm-package.json`.
+```
+elm-proper-install eeue56/elm-http-server
+```
 
+You'll also need to add `"native-modules": true` to your `elm-package.json`.
 
 ## Sync
 
