@@ -1,0 +1,30 @@
+{
+  "name": "eeue56-elm-ffi",
+  "version": "0.0.2",
+  "description": "Elm FFI package",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "node install.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eeue56/elm-ffi.git"
+  },
+  "keywords": [
+    "elm",
+    "ffi"
+  ],
+  "author": "eeue56",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/eeue56/elm-ffi/issues"
+  },
+  "homepage": "https://github.com/eeue56/elm-ffi#readme",
+  "dependencies": {
+    "post-install-elm": "^1.1.0"
+  }
+}
