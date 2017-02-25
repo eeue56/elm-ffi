@@ -3,30 +3,10 @@
 
 This documentation is intended to help answer questions on how Elm works entirely. It will aim to be always true to the current release of Elm - which is currently 0.18.
 
+
 ## Types
 
 No type information is preserved after compiling Elm. However, these are some things that are preserved. These are mainly constructors. 
-
-
-### Type aliases
-
-Type aliases are represented as pure JS objects at runtime. Unlike union types, they do not have the field `ctor`. 
-
-```elm
-type alias Model = {
-	name : String, 
-	age : Int
-}
-```
-
-gets compiled into 
-
-```js
-var _user$project$Examples$Model = F2(function(name, age){
-	return { name: name, age: age};
-});
-```
-
 
 ### Union types
 
@@ -108,7 +88,7 @@ complexPatternMatch animal =
 
 gets compiled into
 
-```
+```js
 var _user$project$Examples$complexPatternMatch = function (animal) {
 	var _p0 = animal;
 	switch (_p0.ctor) {
@@ -120,6 +100,25 @@ var _user$project$Examples$complexPatternMatch = function (animal) {
 			return {ctor: '_Tuple0'};
 	}
 };
+```
+
+### Type aliases
+
+Type aliases are represented as pure JS objects at runtime. Unlike union types, they do not have the field `ctor`. 
+
+```elm
+type alias Model = {
+	name : String, 
+	age : Int
+}
+```
+
+gets compiled into 
+
+```js
+var _user$project$Examples$Model = F2(function(name, age){
+	return { name: name, age: age};
+});
 ```
 
 
@@ -183,4 +182,19 @@ var _user$project$Examples$LotsOfthings = function (a) {
 };
 ```
 
+
+## Modules
+
+All items in a module are compiled as explained above, namespaced in a private scope shared by all the Elm application. Everything is statically definied, in the order of the items imported. No hoisting is provided. 
+
 ## Native Modules
+
+A native module is expected to expose an object of the form 
+
+```js
+var _user$project$Native_ModuleName = {
+	aFunction: function(a) {}
+};
+```
+
+Note that Elm does not currently correctly warn you if you attempt to use a native function that does not exist. It will also not warn you if it is named incorrectly.
