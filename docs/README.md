@@ -1,7 +1,7 @@
 # Elm compiled documentation
 
 
-This documentation is intended to help answer questions on how Elm works entirely. It will aim to be always true to the current release of Elm - which is currently 0.18.
+This documentation is intended to help answer questions on how Elm works entirely. It will aim to be always true to the current release of Elm - which is currently 0.18. Sometimes when Elm breaks, it's useful to have an understanding of how it looks in production. Here's a brain dump from me.
 
 
 ## Types
