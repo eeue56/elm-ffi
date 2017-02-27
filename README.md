@@ -83,5 +83,5 @@ setTimeout(function(){
 
 ```
 
-Now you can use this as you would any other task. `_fail` can be used to produce the error task, while `_succeed` is for success cases. You have to wrap this value in a call to `callback` - which is used to tell the schedular that the task has completed.
+Now you can use this as you would any other task. `_fail` can be used to produce the error task, while `_succeed` is for success cases. You have to wrap this value in a call to `callback` - which is used to tell the scheduler that the task has completed.
 
