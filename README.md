@@ -57,7 +57,7 @@ safeLog thing =
     case FFI.safeSync "console.log(_0);" [ FFI.asIs thing ] of 
         Err message ->
             let
-                _ = Debug.log "FFI log function did not work!" 
+                _ = Debug.log "FFI log function did not work!" message
             in 
                 ()
         Ok v ->
